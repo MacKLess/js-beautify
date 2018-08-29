@@ -30,6 +30,12 @@
 
 var BaseOptions = require('../core/options').Options;
 
+/** @module css/options */
+/**
+ * Options for the CSS beautifier
+ * @augments core/options.Options
+ * @class
+ */
 function Options(options) {
   BaseOptions.call(this, options, 'css');
 

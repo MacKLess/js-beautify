@@ -28,6 +28,17 @@
 
 'use strict';
 
+/** @module core/options */
+
+/**
+ * This represents the options and functionality available to all beautifiers.
+ * Provides helper methods to get values from the provided options object,
+ * returning defaults if not set.
+ * @constructor
+ * @param {Object} options - The options object passed to the raw options object.
+ * @param {string} merge_child_field - The name of the field out of which options
+ * are merged with the parent options list.
+ */
 function Options(options, merge_child_field) {
   options = _mergeOpts(options, merge_child_field);
   this.raw_options = _normalizeOpts(options);
@@ -103,6 +114,15 @@ Options.prototype._get_number = function(name, default_value) {
   return result;
 };
 
+/**
+ * Gets the selection list from the options object and compares it to a list of
+ * acceptable values. If the object options is blank, it defaults to the value
+ * of the first value in the acceptable array.
+ * @param {string} name - The name of the option.
+ * @param {Array} selection_list - The array of acceptable values.
+ * @param {null | Array} default_value - The default value if the field on the
+ * raw_options is not set.
+ */
 Options.prototype._get_selection = function(name, selection_list, default_value) {
   default_value = default_value || [selection_list[0]];
   if (!this._is_valid_selection(default_value, selection_list)) {
