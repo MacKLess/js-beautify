@@ -33,6 +33,9 @@ build_js()
   cat ./dist/legacy_beautify_html.js >> ./js/lib/beautify-html.js
   cat ./tools/template/beautify-html.end.js >> ./js/lib/beautify-html.js
 
+  echo generate JSDoc
+  ./node_modules/.bin/jsdoc --destination build/doc --recurse js/src/core js/src/css js/src/html js/src/javascript
+  echo "run 'open build/doc/index.html'"
 }
 
 build_beautify()

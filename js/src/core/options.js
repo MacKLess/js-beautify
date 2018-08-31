@@ -43,12 +43,20 @@ function Options(options, merge_child_field) {
   options = _mergeOpts(options, merge_child_field);
   this.raw_options = _normalizeOpts(options);
 
-  // Support passing the source text back with no change
+  /** Support passing the source text back with no change
+  * @member {boolean}
+  */
   this.disabled = this._get_boolean('disabled');
 
+  /** Specifies string to use for newlines
+  * 'Auto' detected value matching the file passed
+  * @member {string}*/
   this.eol = this._get_characters('eol', 'auto');
+  /** @member {boolean}*/
   this.end_with_newline = this._get_boolean('end_with_newline');
+  /** @member {number}*/
   this.indent_size = this._get_number('indent_size', 4);
+  /** @member {string}*/
   this.indent_char = this._get_characters('indent_char', ' ');
 
   this.preserve_newlines = this._get_boolean('preserve_newlines', true);
@@ -120,7 +128,7 @@ Options.prototype._get_number = function(name, default_value) {
  * of the first value in the acceptable array.
  * @param {string} name - The name of the option.
  * @param {Array} selection_list - The array of acceptable values.
- * @param {null | Array} default_value - The default value if the field on the
+ * @param {?Array} default_value - The default value if the field on the
  * raw_options is not set.
  */
 Options.prototype._get_selection = function(name, selection_list, default_value) {
